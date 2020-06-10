@@ -5,12 +5,12 @@
  *
  *    Description:  adler32 calc program
  *
- *        Version:  1.0
+ *        Version:  1.0.1
  *        Created:  02/27/2014 12:22:10 PM
- *       Revision:  none
+ *       Revision:  06/10/2020 (Joss Brown)
  *       Compiler:  gcc
  *
- *         Author:  Darwin 
+ *         Author:  Darwin
  *
  * =====================================================================================
  */
@@ -24,20 +24,20 @@ uint32_t fadler32(FILE *fp);
 int main(int argc, char **argv)
 {
   if(argc < 2) {
-    fprintf(stderr, "Usage: %s FILENAME\n", argv[0]);
+    printf("v1.0.1rev - usage: %s <PATH>\n", argv[0]);
     exit(1);
   }
 
   FILE *fp;
   fp = fopen(argv[1], "r");
-  
+
   if(fp != NULL) {
-    printf("Checksum for %s: %x\n", argv[1], fadler32(fp));
+    printf("%x\n", fadler32(fp));
     fclose(fp);
     return 0;
   }
   else
-    fprintf(stderr, "Error: fopen() failed. (file doesn't exist?)\n");
+    fprintf(stderr, "Error: file doesn't exist!\n");
 
   return 1;
 }
